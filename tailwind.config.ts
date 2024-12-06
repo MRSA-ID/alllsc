@@ -16,6 +16,9 @@ export default {
 				foreground: "var(--foreground)",
 			},
 		},
+		backgroundImage: {
+			"text-gradient": "linear-gradient(180deg,#f1c248 0,#f5d979)",
+		},
 	},
 	plugins: [addVariablesForColors],
 } satisfies Config;
