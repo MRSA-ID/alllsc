@@ -239,10 +239,16 @@ export default function Home() {
 								}}>
 								{data?.map((current) => (
 									<SwiperSlide key={current.id}>
-										<img
+										<Image
 											src={current.uri}
 											alt={"Alt " + current.title}
 											className="w-[150px] h-[150px] mx-auto my-auto object-contain object-center"
+											priority={false}
+											width={150}
+											height={150}
+											loading="lazy"
+											blurDataURL={current.uri}
+											unoptimized
 										/>
 										{/* <Image
 											src={current.uri}
@@ -365,19 +371,19 @@ export default function Home() {
 					<div className="text-2xl md:text-3xl pb-8 flex flex-col text-center md:text-start">
 						<h1 className="hidden md:block font-normal">ALSSA Corp</h1>
 						<h1 className="font-bold md:font-black">
-							<span className="md:hidden">ALSSA Corp</span> Portfolio
+							<span className="md:hidden">ALSSA Corp</span>&apos;Portfolio
 						</h1>
 					</div>
 					<div className="flex justify-center items-center flex-col">
 						<div className="max-w-[1200px] pb-8">
 							<p className="text-normal text-md text-justify">
-								At ALSSA Corporindo, we're not just building technology; we're
-								crafting the very future of digital infrastructure. Our
-								portfolio is a testament to the relentless pursuit of excellence
-								and a journey through groundbreaking achievements that have
-								established us as a linchpin in the technology domain since our
-								inception in 1990. Dive into our Portfolio to see how our
-								innovative approaches have resolved complex challenges and
+								At ALSSA Corporindo, we&lsquo;re not just building technology
+								we&#39;re crafting the very future of digital infrastructure.
+								Our portfolio is a testament to the relentless pursuit of
+								excellence and a journey through groundbreaking achievements
+								that have established us as a linchpin in the technology domain
+								since our inception in 1990. Dive into our Portfolio to see how
+								our innovative approaches have resolved complex challenges and
 								spurred growth for our clients and partners nationwide.
 							</p>
 						</div>
