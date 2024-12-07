@@ -40,6 +40,13 @@ body {
 	display: none;
 } */
 
+.swiper-button-prev,
+.swiper-button-next {
+	color: #0a0a0a !important;
+	transform: scale(1.5);
+	display: none !important;
+}
+
 .swiper-slide-active {
 	border-bottom: 5px solid var(--border-slider);
 }
@@ -48,4 +55,14 @@ body {
 	/* padding-bottom: 2rem; */
 	width: 202px;
 	height: 202px;
+}
+
+@media screen and (max-width: 768px) {
+	.swiper-slide-active {
+		border: none;
+	}
+	.swiper-button-prev,
+	.swiper-button-next {
+		display: block !important;
+	}
 }
