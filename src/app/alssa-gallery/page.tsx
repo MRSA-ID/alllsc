@@ -122,10 +122,11 @@ const Gallery = () => {
 				<div className="container px-4 sm:px-8 lg:px-16 pt-8">
 					<div className="mt-8 text-4xl lg:text-5xl text-center md:text-start">
 						<h1 className="font-light text-[#1F2839] hidden md:block">
-							ALSSA's
+							ALSSA&apos;s
 						</h1>
 						<h1 className="text-[#F1C248] font-bold md:font-black">
-							<span className="md:hidden text-[#1F2839]">ALSSA's</span> Gallery
+							<span className="md:hidden text-[#1F2839]">ALSSA&apos;s</span>{" "}
+							Gallery
 						</h1>
 					</div>
 				</div>

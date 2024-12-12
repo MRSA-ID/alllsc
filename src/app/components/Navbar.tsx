@@ -100,7 +100,7 @@ const Navbar = () => {
 																	</clipPath>
 																</defs>
 															</svg>
-															ALSSA's Gallery
+															ALSSA&apos;s Gallery
 														</Link>
 													</div>
 													<Popover.Arrow className="PopoverArrow" />
