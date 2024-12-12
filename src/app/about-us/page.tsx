@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Pagination } from "@mui/material";
 import Image from "next/image";
 
@@ -178,7 +178,7 @@ const AboutUs = () => {
 								institutions, and forward-thinking organizations to foster an
 								environment of knowledge exchange and innovation. Through these
 								collaborations, we aim to drive collective progress and address
-								complex challenges in today's rapidly evolving digital
+								complex challenges in today&apos;s rapidly evolving digital
 								landscape.
 							</p>
 						</div>

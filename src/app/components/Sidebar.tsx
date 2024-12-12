@@ -27,7 +27,7 @@ const Sidebar: React.FC<SidebarFilterProps> = ({
 
 	// Toggle checkbox state
 	const handleCheckboxToggle = useCallback(
-		(itemId: string, sectionKey: string) => {
+		(itemId: string) => {
 			const newCheckedItems = {
 				...checkedItems,
 				[itemId]: !checkedItems[itemId],
@@ -59,17 +59,14 @@ const Sidebar: React.FC<SidebarFilterProps> = ({
 	);
 
 	// Checkbox component to maintain consistency
-	const Checkbox: React.FC<{ item: CheckboxItem; sectionKey: string }> = ({
-		item,
-		sectionKey,
-	}) => (
+	const Checkbox: React.FC<{ item: CheckboxItem }> = ({ item }) => (
 		<div className="items-top flex space-x-2 mb-2">
 			<button
 				type="button"
 				role="checkbox"
 				aria-checked={!!checkedItems[item.id]}
 				data-state={checkedItems[item.id] ? "checked" : "unchecked"}
-				onClick={() => handleCheckboxToggle(item.id, sectionKey)}
+				onClick={() => handleCheckboxToggle(item.id)}
 				className={`
           peer h-4 w-4 shrink-0 rounded-sm border ring-offset-background 
           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring 
@@ -102,7 +99,6 @@ const Sidebar: React.FC<SidebarFilterProps> = ({
 						<Checkbox
 							key={item.id}
 							item={item}
-							sectionKey={section.filterKey}
 						/>
 					))}
 				</div>
