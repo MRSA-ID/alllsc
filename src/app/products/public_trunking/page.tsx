@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import * as Popover from "@radix-ui/react-popover";
 import Sidebar from "@/app/components/Sidebar";
 import Image from "next/image";
@@ -12,31 +12,36 @@ interface Product {
 	image: string;
 }
 const PublicTrunking = () => {
-	const allProducts = [
-		{
-			category: "Public Trunking",
-			sub_category: "DMR System",
-			brand: "Motorola",
-			name: "Motorola XIR P8668i",
-			image:
-				"https://api.alssacorp.co.id/media/product/Motorola_XIR_P8668i.jpg",
-		},
-		{
-			category: "Public Trunking",
-			sub_category: "DMR System",
-			brand: "Motorola",
-			name: "Motorola XIR P6620i",
-			image:
-				"https://api.alssacorp.co.id/media/product/MOTOROLA-XIR-P6620i_1_tE3Gdg6.jpg",
-		},
-		{
-			category: "Public Trunking",
-			sub_category: "DMR System",
-			brand: "Motorola",
-			name: "Motorola XIR P6600i",
-			image: "https://api.alssacorp.co.id/media/product/XiR-P6600i_sZfudMP.jpg",
-		},
-	];
+	const allProducts = useMemo(
+		() => [
+			{
+				category: "Public Trunking",
+				sub_category: "DMR System",
+				brand: "Motorola",
+				name: "Motorola XIR P8668i",
+				image:
+					"https://api.alssacorp.co.id/media/product/Motorola_XIR_P8668i.jpg",
+			},
+			{
+				category: "Public Trunking",
+				sub_category: "DMR System",
+				brand: "Motorola",
+				name: "Motorola XIR P6620i",
+				image:
+					"https://api.alssacorp.co.id/media/product/MOTOROLA-XIR-P6620i_1_tE3Gdg6.jpg",
+			},
+			{
+				category: "Public Trunking",
+				sub_category: "DMR System",
+				brand: "Motorola",
+				name: "Motorola XIR P6600i",
+				image:
+					"https://api.alssacorp.co.id/media/product/XiR-P6600i_sZfudMP.jpg",
+			},
+		],
+		[]
+	);
+
 	// State to store filtered products
 	const [filteredProducts, setFilteredProducts] = useState(allProducts);
 

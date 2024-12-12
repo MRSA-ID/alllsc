@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import * as Popover from "@radix-ui/react-popover";
 import Sidebar from "@/app/components/Sidebar";
 import Image from "next/image";
@@ -12,177 +12,181 @@ interface Product {
 	image: string;
 }
 const RadioTrunking = () => {
-	const allProducts = [
-		{
-			category: "Radio Trunking",
-			sub_category: "DMR System",
-			brand: "Motorola",
-			name: "Motorola XIR P8668i",
-			image:
-				"https://api.alssacorp.co.id/media/product/Motorola_XIR_P8668i_NfR7y85.jpg",
-		},
-		{
-			category: "Radio Trunking",
-			sub_category: "DMR System",
-			brand: "Tait",
-			name: "TP9500",
-			image: "https://api.alssacorp.co.id/media/product/tp9560.jpg",
-		},
-		{
-			category: "Radio Trunking",
-			sub_category: "DMR System",
-			brand: "Tait",
-			name: "TP9300",
-			image:
-				"https://api.alssacorp.co.id/media/product/Tait-TP9360-Series-Two-Way-Radios.jpg",
-		},
-		{
-			category: "Radio Trunking",
-			sub_category: "DMR System",
-			brand: "Tait",
-			name: "TP9361 IS",
-			image: "https://api.alssacorp.co.id/media/product/Tait-TP9361.jpg",
-		},
-		{
-			category: "Radio Trunking",
-			sub_category: "DMR System",
-			brand: "Tait",
-			name: "TM9355",
-			image: "https://api.alssacorp.co.id/media/product/tm93.jpeg",
-		},
-		{
-			category: "Radio Trunking",
-			sub_category: "DMR System",
-			brand: "Motorola",
-			name: "Motorola XIR P6620i",
-			image:
-				"https://api.alssacorp.co.id/media/product/MOTOROLA-XIR-P6620i_1.jpg",
-		},
-		{
-			category: "Radio Trunking",
-			sub_category: "Tetra System",
-			brand: "Hytera",
-			name: "Hytera PT580H",
-			image: "https://api.alssacorp.co.id/media/product/hytera_pt5.png",
-		},
-		{
-			category: "Radio Trunking",
-			sub_category: "Tetra System",
-			brand: "Hytera",
-			name: "Hytera PT580H UL913",
-			image:
-				"https://api.alssacorp.co.id/media/product/Hytera-PT580H-Plus-UL913-Tetra-Radio-img2.jpg",
-		},
-		{
-			category: "Radio Trunking",
-			sub_category: "Tetra System",
-			brand: "Hytera",
-			name: "Hytera MT680",
-			image:
-				"https://api.alssacorp.co.id/media/product/Radio-RIG-Hytera-MT680-Plus-Professional-TETRA-Mobile-Radio.jpg",
-		},
-		{
-			category: "Radio Trunking",
-			sub_category: "DMR System",
-			brand: "Motorola",
-			name: "Motorola XiR P6600i",
-			image: "https://api.alssacorp.co.id/media/product/XiR-P6600i.jpg",
-		},
-		{
-			category: "Radio Trunking",
-			sub_category: "Tetra System",
-			brand: "Sepura",
-			name: "Sepura STP8X138",
-			image:
-				"https://api.alssacorp.co.id/media/product/stp8X138-removebg-preview.png",
-		},
-		{
-			category: "Radio Trunking",
-			sub_category: "Tetra System",
-			brand: "Sepura",
-			name: "Sepura STP8X038",
-			image: "https://api.alssacorp.co.id/media/product/STP8X000.png",
-		},
-		{
-			category: "Radio Trunking",
-			sub_category: "DMR System",
-			brand: "Kirisun",
-			name: "Kirisun DP810",
-			image: "https://api.alssacorp.co.id/media/product/dp810.jpg",
-		},
-		{
-			category: "Radio Trunking",
-			sub_category: "DMR System",
-			brand: "Kirisun",
-			name: "Kirisun DP815",
-			image:
-				"https://api.alssacorp.co.id/media/product/H323779fd871a4427ba2d7194b2dc886c7.png",
-		},
-		{
-			category: "Radio Trunking",
-			sub_category: "DMR System",
-			brand: "Kirisun",
-			name: "Kirisun DP610",
-			image: "https://api.alssacorp.co.id/media/product/dp610.jpg",
-		},
-		{
-			category: "Radio Trunking",
-			sub_category: "DMR System",
-			brand: "Kirisun",
-			name: "Kirisun GP700 POC",
-			image: "https://api.alssacorp.co.id/media/product/gp700.jpg",
-		},
-		{
-			category: "Radio Trunking",
-			sub_category: "DMR System",
-			brand: "Motorola",
-			name: "Motorola XIR M8668i",
-			image:
-				"https://api.alssacorp.co.id/media/product/motorola-xir-m8668i.jpg",
-		},
-		{
-			category: "Radio Trunking",
-			sub_category: "DMR System",
-			brand: "Motorola",
-			name: "Motorola SLR5300 Repeater",
-			image: "https://api.alssacorp.co.id/media/product/SLR5300.jpg",
-		},
-		{
-			category: "Radio Trunking",
-			sub_category: "DMR System",
-			brand: "Tait",
-			name: "TB9400 Base Station",
-			image: "https://api.alssacorp.co.id/media/product/TB9400.jpg",
-		},
-		{
-			category: "Radio Trunking",
-			sub_category: "DMR System",
-			brand: "Kirisun",
-			name: "Kirisun DR600 Repeater",
-			image: "https://api.alssacorp.co.id/media/product/DR600.jpg",
-		},
-		{
-			category: "Radio Trunking",
-			sub_category: "DMR System",
-			brand: "Kirisun",
-			name: "Kirisun TM840",
-			image: "https://api.alssacorp.co.id/media/product/TM840.jpg",
-		},
-		{
-			category: "Radio Trunking",
-			sub_category: "DMR System",
-			brand: "Hytera",
-			name: "Hytera HP788",
-			image: "https://api.alssacorp.co.id/media/product/HP788.png",
-		},
-		{
-			category: "Radio Trunking",
-			sub_category: "DMR System",
-			brand: "Hytera",
-			name: "Hytera RD98X Repeater",
-			image: "https://api.alssacorp.co.id/media/product/RD980.png",
-		},
-	];
+	const allProducts = useMemo(
+		() => [
+			{
+				category: "Radio Trunking",
+				sub_category: "DMR System",
+				brand: "Motorola",
+				name: "Motorola XIR P8668i",
+				image:
+					"https://api.alssacorp.co.id/media/product/Motorola_XIR_P8668i_NfR7y85.jpg",
+			},
+			{
+				category: "Radio Trunking",
+				sub_category: "DMR System",
+				brand: "Tait",
+				name: "TP9500",
+				image: "https://api.alssacorp.co.id/media/product/tp9560.jpg",
+			},
+			{
+				category: "Radio Trunking",
+				sub_category: "DMR System",
+				brand: "Tait",
+				name: "TP9300",
+				image:
+					"https://api.alssacorp.co.id/media/product/Tait-TP9360-Series-Two-Way-Radios.jpg",
+			},
+			{
+				category: "Radio Trunking",
+				sub_category: "DMR System",
+				brand: "Tait",
+				name: "TP9361 IS",
+				image: "https://api.alssacorp.co.id/media/product/Tait-TP9361.jpg",
+			},
+			{
+				category: "Radio Trunking",
+				sub_category: "DMR System",
+				brand: "Tait",
+				name: "TM9355",
+				image: "https://api.alssacorp.co.id/media/product/tm93.jpeg",
+			},
+			{
+				category: "Radio Trunking",
+				sub_category: "DMR System",
+				brand: "Motorola",
+				name: "Motorola XIR P6620i",
+				image:
+					"https://api.alssacorp.co.id/media/product/MOTOROLA-XIR-P6620i_1.jpg",
+			},
+			{
+				category: "Radio Trunking",
+				sub_category: "Tetra System",
+				brand: "Hytera",
+				name: "Hytera PT580H",
+				image: "https://api.alssacorp.co.id/media/product/hytera_pt5.png",
+			},
+			{
+				category: "Radio Trunking",
+				sub_category: "Tetra System",
+				brand: "Hytera",
+				name: "Hytera PT580H UL913",
+				image:
+					"https://api.alssacorp.co.id/media/product/Hytera-PT580H-Plus-UL913-Tetra-Radio-img2.jpg",
+			},
+			{
+				category: "Radio Trunking",
+				sub_category: "Tetra System",
+				brand: "Hytera",
+				name: "Hytera MT680",
+				image:
+					"https://api.alssacorp.co.id/media/product/Radio-RIG-Hytera-MT680-Plus-Professional-TETRA-Mobile-Radio.jpg",
+			},
+			{
+				category: "Radio Trunking",
+				sub_category: "DMR System",
+				brand: "Motorola",
+				name: "Motorola XiR P6600i",
+				image: "https://api.alssacorp.co.id/media/product/XiR-P6600i.jpg",
+			},
+			{
+				category: "Radio Trunking",
+				sub_category: "Tetra System",
+				brand: "Sepura",
+				name: "Sepura STP8X138",
+				image:
+					"https://api.alssacorp.co.id/media/product/stp8X138-removebg-preview.png",
+			},
+			{
+				category: "Radio Trunking",
+				sub_category: "Tetra System",
+				brand: "Sepura",
+				name: "Sepura STP8X038",
+				image: "https://api.alssacorp.co.id/media/product/STP8X000.png",
+			},
+			{
+				category: "Radio Trunking",
+				sub_category: "DMR System",
+				brand: "Kirisun",
+				name: "Kirisun DP810",
+				image: "https://api.alssacorp.co.id/media/product/dp810.jpg",
+			},
+			{
+				category: "Radio Trunking",
+				sub_category: "DMR System",
+				brand: "Kirisun",
+				name: "Kirisun DP815",
+				image:
+					"https://api.alssacorp.co.id/media/product/H323779fd871a4427ba2d7194b2dc886c7.png",
+			},
+			{
+				category: "Radio Trunking",
+				sub_category: "DMR System",
+				brand: "Kirisun",
+				name: "Kirisun DP610",
+				image: "https://api.alssacorp.co.id/media/product/dp610.jpg",
+			},
+			{
+				category: "Radio Trunking",
+				sub_category: "DMR System",
+				brand: "Kirisun",
+				name: "Kirisun GP700 POC",
+				image: "https://api.alssacorp.co.id/media/product/gp700.jpg",
+			},
+			{
+				category: "Radio Trunking",
+				sub_category: "DMR System",
+				brand: "Motorola",
+				name: "Motorola XIR M8668i",
+				image:
+					"https://api.alssacorp.co.id/media/product/motorola-xir-m8668i.jpg",
+			},
+			{
+				category: "Radio Trunking",
+				sub_category: "DMR System",
+				brand: "Motorola",
+				name: "Motorola SLR5300 Repeater",
+				image: "https://api.alssacorp.co.id/media/product/SLR5300.jpg",
+			},
+			{
+				category: "Radio Trunking",
+				sub_category: "DMR System",
+				brand: "Tait",
+				name: "TB9400 Base Station",
+				image: "https://api.alssacorp.co.id/media/product/TB9400.jpg",
+			},
+			{
+				category: "Radio Trunking",
+				sub_category: "DMR System",
+				brand: "Kirisun",
+				name: "Kirisun DR600 Repeater",
+				image: "https://api.alssacorp.co.id/media/product/DR600.jpg",
+			},
+			{
+				category: "Radio Trunking",
+				sub_category: "DMR System",
+				brand: "Kirisun",
+				name: "Kirisun TM840",
+				image: "https://api.alssacorp.co.id/media/product/TM840.jpg",
+			},
+			{
+				category: "Radio Trunking",
+				sub_category: "DMR System",
+				brand: "Hytera",
+				name: "Hytera HP788",
+				image: "https://api.alssacorp.co.id/media/product/HP788.png",
+			},
+			{
+				category: "Radio Trunking",
+				sub_category: "DMR System",
+				brand: "Hytera",
+				name: "Hytera RD98X Repeater",
+				image: "https://api.alssacorp.co.id/media/product/RD980.png",
+			},
+		],
+		[]
+	);
+
 	// State to store filtered products
 	const [filteredProducts, setFilteredProducts] = useState(allProducts);
 

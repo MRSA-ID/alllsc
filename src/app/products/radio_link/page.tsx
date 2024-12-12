@@ -1,6 +1,5 @@
 "use client";
-import React, { useCallback, useState } from "react";
-import { Checkbox, FormControlLabel, FormGroup } from "@mui/material";
+import React, { useCallback, useMemo, useState } from "react";
 import Sidebar from "@/app/components/Sidebar";
 import Image from "next/image";
 import * as Popover from "@radix-ui/react-popover";
@@ -13,15 +12,20 @@ interface Product {
 	image: string;
 }
 const RadioLink = () => {
-	const allProducts = [
-		{
-			category: "Radio Link",
-			sub_category: "DMR System",
-			brand: "Tait",
-			name: "TD9300",
-			image: "https://api.alssacorp.co.id/media/product/TD9300.png",
-		},
-	];
+	const allProducts = useMemo(
+		() => [
+			{
+				category: "Radio Link",
+				sub_category: "DMR System",
+				brand: "Tait",
+				name: "TD9300",
+				image: "https://api.alssacorp.co.id/media/product/TD9300.png",
+			},
+		],
+		[]
+	);
+
+	// useMemo(() => , []);
 	// State to store filtered products
 	const [filteredProducts, setFilteredProducts] = useState(allProducts);
 

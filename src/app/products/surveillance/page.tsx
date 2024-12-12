@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import * as Popover from "@radix-ui/react-popover";
 import Sidebar from "@/app/components/Sidebar";
 import Image from "next/image";
@@ -12,113 +12,118 @@ interface Product {
 	image: string;
 }
 const Surveilliance = () => {
-	const allProducts = [
-		{
-			category: "Surveillance",
-			sub_category: "",
-			brand: "Hikvision",
-			name: "DS-2DF8442IXS-AELW(T5) - PTZ Cameras",
-			image:
-				"https://api.alssacorp.co.id/media/product/DS-2DF8442IXS-AELWT5_-_PTZ_Cameras.jpg",
-		},
-		{
-			category: "Surveillance",
-			sub_category: "",
-			brand: "Hikvision",
-			name: "DS-2CD3146G2-IS(U)",
-			image: "https://api.alssacorp.co.id/media/product/DS-2CD3146G2-ISU.jpg",
-		},
-		{
-			category: "Surveillance",
-			sub_category: "",
-			brand: "Hikvision",
-			name: "DS-2CD3046G2H-LI(U)",
-			image: "https://api.alssacorp.co.id/media/product/DS-2CD3046G2H-LIU.jpg",
-		},
-		{
-			category: "Surveillance",
-			sub_category: "",
-			brand: "Hikvision",
-			name: "iDS-2CD7A46G0 S-IZHS(Y)",
-			image:
-				"https://api.alssacorp.co.id/media/product/iDS-2CD7A46G0_S-IZHSY.jpg",
-		},
-		{
-			category: "Surveillance",
-			sub_category: "",
-			brand: "Hikvision",
-			name: "iDS-9600NXI-I16 NVR",
-			image:
-				"https://api.alssacorp.co.id/media/product/iDS-9600NXI-I16_NVR.jpg",
-		},
-		{
-			category: "Surveillance",
-			sub_category: "",
-			brand: "Hikvision",
-			name: "iDS-9632NXI-M8",
-			image: "https://api.alssacorp.co.id/media/product/iDS-9632NXI-M8_.jpg",
-		},
-		{
-			category: "Surveillance",
-			sub_category: "",
-			brand: "AXIS",
-			name: "AXIS XFQ1656 Explosion Protected Camera",
-			image:
-				"https://api.alssacorp.co.id/media/product/AXIS_XFQ1656_Explosion-Protected_Camera.jpg",
-		},
-		{
-			category: "Surveillance",
-			sub_category: "",
-			brand: "AXIS",
-			name: "AXIS XPQ1785 Explosion Protected PTZ Camera",
-			image:
-				"https://api.alssacorp.co.id/media/product/AXIS_XPQ1785_Explosion-Protected_PTZ_Camera.png",
-		},
-		{
-			category: "Surveillance",
-			sub_category: "",
-			brand: "AXIS",
-			name: "AXIS Camera Station S1216 Rack Recording Server",
-			image:
-				"https://api.alssacorp.co.id/media/product/AXIS_S1216_Rack_angle_right.png.jpg",
-		},
-		{
-			category: "Surveillance",
-			sub_category: "",
-			brand: "AXIS",
-			name: "AXIS TU9001 Control Board",
-			image:
-				"https://api.alssacorp.co.id/media/product/AXIS_TU9001_Control_Board.jpg",
-		},
-		{
-			category: "Surveillance",
-			sub_category: "",
-			brand: "Hanwa",
-			name: "TNO-6322ER",
-			image: "https://api.alssacorp.co.id/media/product/TNO-6322ER.png",
-		},
-		{
-			category: "Surveillance",
-			sub_category: "",
-			brand: "Hanwa",
-			name: "TNU-6322E",
-			image: "https://api.alssacorp.co.id/media/product/TNU-6322E.png",
-		},
-		{
-			category: "Surveillance",
-			sub_category: "",
-			brand: "Hanwa",
-			name: "XRN-3210RB2",
-			image: "https://api.alssacorp.co.id/media/product/XRN-3210RB2.png",
-		},
-		{
-			category: "Surveillance",
-			sub_category: "",
-			brand: "Hanwa",
-			name: "SPC-7000",
-			image: "https://api.alssacorp.co.id/media/product/SPC-7000.png",
-		},
-	];
+	const allProducts = useMemo(
+		() => [
+			{
+				category: "Surveillance",
+				sub_category: "",
+				brand: "Hikvision",
+				name: "DS-2DF8442IXS-AELW(T5) - PTZ Cameras",
+				image:
+					"https://api.alssacorp.co.id/media/product/DS-2DF8442IXS-AELWT5_-_PTZ_Cameras.jpg",
+			},
+			{
+				category: "Surveillance",
+				sub_category: "",
+				brand: "Hikvision",
+				name: "DS-2CD3146G2-IS(U)",
+				image: "https://api.alssacorp.co.id/media/product/DS-2CD3146G2-ISU.jpg",
+			},
+			{
+				category: "Surveillance",
+				sub_category: "",
+				brand: "Hikvision",
+				name: "DS-2CD3046G2H-LI(U)",
+				image:
+					"https://api.alssacorp.co.id/media/product/DS-2CD3046G2H-LIU.jpg",
+			},
+			{
+				category: "Surveillance",
+				sub_category: "",
+				brand: "Hikvision",
+				name: "iDS-2CD7A46G0 S-IZHS(Y)",
+				image:
+					"https://api.alssacorp.co.id/media/product/iDS-2CD7A46G0_S-IZHSY.jpg",
+			},
+			{
+				category: "Surveillance",
+				sub_category: "",
+				brand: "Hikvision",
+				name: "iDS-9600NXI-I16 NVR",
+				image:
+					"https://api.alssacorp.co.id/media/product/iDS-9600NXI-I16_NVR.jpg",
+			},
+			{
+				category: "Surveillance",
+				sub_category: "",
+				brand: "Hikvision",
+				name: "iDS-9632NXI-M8",
+				image: "https://api.alssacorp.co.id/media/product/iDS-9632NXI-M8_.jpg",
+			},
+			{
+				category: "Surveillance",
+				sub_category: "",
+				brand: "AXIS",
+				name: "AXIS XFQ1656 Explosion Protected Camera",
+				image:
+					"https://api.alssacorp.co.id/media/product/AXIS_XFQ1656_Explosion-Protected_Camera.jpg",
+			},
+			{
+				category: "Surveillance",
+				sub_category: "",
+				brand: "AXIS",
+				name: "AXIS XPQ1785 Explosion Protected PTZ Camera",
+				image:
+					"https://api.alssacorp.co.id/media/product/AXIS_XPQ1785_Explosion-Protected_PTZ_Camera.png",
+			},
+			{
+				category: "Surveillance",
+				sub_category: "",
+				brand: "AXIS",
+				name: "AXIS Camera Station S1216 Rack Recording Server",
+				image:
+					"https://api.alssacorp.co.id/media/product/AXIS_S1216_Rack_angle_right.png.jpg",
+			},
+			{
+				category: "Surveillance",
+				sub_category: "",
+				brand: "AXIS",
+				name: "AXIS TU9001 Control Board",
+				image:
+					"https://api.alssacorp.co.id/media/product/AXIS_TU9001_Control_Board.jpg",
+			},
+			{
+				category: "Surveillance",
+				sub_category: "",
+				brand: "Hanwa",
+				name: "TNO-6322ER",
+				image: "https://api.alssacorp.co.id/media/product/TNO-6322ER.png",
+			},
+			{
+				category: "Surveillance",
+				sub_category: "",
+				brand: "Hanwa",
+				name: "TNU-6322E",
+				image: "https://api.alssacorp.co.id/media/product/TNU-6322E.png",
+			},
+			{
+				category: "Surveillance",
+				sub_category: "",
+				brand: "Hanwa",
+				name: "XRN-3210RB2",
+				image: "https://api.alssacorp.co.id/media/product/XRN-3210RB2.png",
+			},
+			{
+				category: "Surveillance",
+				sub_category: "",
+				brand: "Hanwa",
+				name: "SPC-7000",
+				image: "https://api.alssacorp.co.id/media/product/SPC-7000.png",
+			},
+		],
+		[]
+	);
+
 	// State to store filtered products
 	const [filteredProducts, setFilteredProducts] = useState(allProducts);
 
